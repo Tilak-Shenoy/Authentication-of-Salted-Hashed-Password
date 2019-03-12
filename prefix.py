@@ -1,36 +1,19 @@
 import numpy as np
 from utils import create_sequence_of_symbol, to_symbol,inv_permute,comp, permute
-# from AES import encrypt
 import hashlib
 import random
 
 
 def prefix(s):
 	ndb=[]
+	print("\nPermuting Bits...")
 	perm_bits=permute(s)
-	# perm_bits=shuffle_forward(s)
-	# print(perm_bits)
-	# print("Hellp")
 	m=len(perm_bits)
-	# j_ind=[i for i in range(len(s))]
-	# k_ind=[_ for _ in range(len(s))]
-
+	print("Generating Negative Database...")
 	for i in range(m-1,1,-1):
-
 		x=list(create_sequence_of_symbol(m))
-		# print(x)
-		# for j in range(i-1):
-		# 	x[j]=to_symbol(perm_bits[j])
-
-		# x[i]= to_symbol(comp(perm_bits[i]))
-		# for j in range(i+1,m):
-		# 	x[j]='*'
-
-		# print((x))
-		# ndb.append(inv_permute(x))
-		# ndb.append(x)
-
 		x[i]=to_symbol(comp(perm_bits[i]))
+
 		j=random.randint(0,i-1)
 		while True:
 			k=random.randint(0,i-1)
@@ -38,8 +21,6 @@ def prefix(s):
 				break
 		x[j]=to_symbol(perm_bits[j])
 		x[k]=to_symbol(perm_bits[k])
-		# print(inv_permute(x))
-		print('\n\n')
 		ndb.append(inv_permute(x))
 
 	x=list(create_sequence_of_symbol(m))
@@ -61,10 +42,11 @@ def prefix(s):
 	x[j]='0'
 	x[k]='0'
 	ndb.append(inv_permute(x))
+
 	x[k]='1'
 	ndb.append(inv_permute(x))
+
 	x[k]='*'
-	# ndb.append(inv_permute(x))
 	while True:
 		k=random.randint(1,m-1)	
 		if j != k:
@@ -72,11 +54,10 @@ def prefix(s):
 	x[j]='1'
 	x[k]='0'
 	ndb.append(inv_permute(x))
+
 	x[k]='1'
 	ndb.append(inv_permute(x))
-
-
-
+	print("Negative Database Generated")
 	return ndb
 
 
