@@ -2,7 +2,7 @@ from utils import comp
 
 hashP=['0','0','0','0']
 np=[['0','0','*',
-'0'],['0','*','0','1'],['0','1','*','0'],['1','0','1','*'],['0','*','0','1']]
+'0'],['0','*','0','1'],['1','*','0','0'],['1','0','*','0'],['0','*','0','1']]
 flag=False
 m=len(hashP)
 
@@ -11,7 +11,7 @@ def main():
 	for i in range(m):
 		# print(number_of_sp(np[i]))
 		if number_of_sp(np[i])!=3 :
-			return False
+			return True
 	# print(number_of_ds(np[m-1],np[m]))
 	if number_of_ds(np[m-1],np[m])!=1 or number_of_ds(np[m+1],np[m+2])!=1 or number_of_ds(np[m+3],np[m+4])!=1 :
 		return False
