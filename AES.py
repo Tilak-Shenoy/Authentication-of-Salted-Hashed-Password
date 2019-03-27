@@ -11,7 +11,7 @@ class AESCipher(object):
 
     def encrypt(self, raw):
         raw = self._pad(raw)
-        iv = Random.new().read(AES.block_size)
+        iv = b'[V\x9d}\x13R_\xcfY\xef\xa0> [\xfc\x12'
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         return base64.b64encode(iv + cipher.encrypt(raw))
 
