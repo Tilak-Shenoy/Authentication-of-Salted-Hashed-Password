@@ -1,1 +1,1 @@
-# Authentication-By-Encrypted-Negative-Password
+# Authentication-By-Salted-Hashed-Password
