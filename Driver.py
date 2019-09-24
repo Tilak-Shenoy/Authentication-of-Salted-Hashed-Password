@@ -12,7 +12,7 @@ def Driver():
 
 	f.close()
 
-
+	# Sub-Shift-Mix-Add
 	with open('salt.json','r') as f1:
 		salt_data=json.load(f1)
 	# 	print(salt_data)
